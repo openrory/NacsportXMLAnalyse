@@ -19,4 +19,7 @@ Om deze applicatie te starten dient u aan de volgende requirements te voldoen:
 
 -- STARTEN --
 U roept het bestand aan op de volgende manier: python3 xml_analyse.py "<pad+bestandsnaam>" "-<type bestand>"}
-Bij <type bestand> kunt u -t aangeven voor "team" en -i voor "individueel"
+Bij <type bestand> kunt u -t aangeven voor "team" en -i voor "individueel" Een voorbeeld hiervan is:
+
+python xml_analyse.py "/Users/rorysie/Library/Mobile Documents/com~apple~CloudDocs/FCDenBosch/video-analyse/170203-FCDenBosch-NacBreda/FC Den Bosch - NAC Team.xml" -t
+
