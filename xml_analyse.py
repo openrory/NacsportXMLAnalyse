@@ -8,9 +8,10 @@ from bokeh.models import Range1d
 from bokeh.models.widgets import Panel, Tabs
 
 
-def xml_to_dict(file_url):
+def xml_to_dict(file_url: str)->dict:
     """
     Takes an input xml file url string from Nacsport as input and transforms it to a dict.
+    :rtype: dict
     :param file_url: input xml string
     :return: dict containing the xml entries
     """
@@ -19,7 +20,7 @@ def xml_to_dict(file_url):
     return nacsport_dict
 
 
-def player_analyse(nacsport_dict:dict, codes:dict):
+def player_analyse(nacsport_dict: dict, codes: dict):
     """
     Takes an input dict as input and prints its summary.
     :param nacsport_dict: input dict
@@ -49,13 +50,13 @@ def player_analyse(nacsport_dict:dict, codes:dict):
 def team_analyse(nacsport_dict: dict, codes: list):
     """
     Takes an input dict as input and prints its summary.
+    :param codes: a list containing all codes in the xml file
     :param nacsport_dict: input xml string
     """
     counts = dict()
     actions_sec = dict()
     actions_min = dict()
     instances = nacsport_dict["file"]["ALL_INSTANCES"]["instance"]
-    # print(instances)
     for instance in instances:
         if instance["code"] in codes:
             if instance["code"] not in counts:
@@ -163,7 +164,7 @@ def plot_actions_team_min(actions: dict, output_file_url: str)->None:
 
         # create a tab
         tab = Panel(child=p, title=action)
-        #add to existing tabs
+        # add to existing tabs
         tabs.append(tab)
 
     tabs = Tabs(tabs=tabs)
@@ -192,7 +193,7 @@ def plot_actions_players_min(actions: dict, output_file_url: str)->None:
 
         # create a tab
         tab = Panel(child=p, title=action)
-        #add to existing tabs
+        # add to existing tabs
         tabs.append(tab)
 
     tabs = Tabs(tabs=tabs)
@@ -238,8 +239,6 @@ if __name__ == '__main__':
     nacsport_dict = xml_to_dict(input_file_url)
     actions_fieldnames = ['type', 'time']
 
-    # print(actions_min)
-    # write_dict_to_csv(counts, codes, outfile_csv)
     if command == '-i':  # individual
         names, codes, actions_sec, actions_min = extract_player_codes(nacsport_dict)
         plot_actions_players_min(actions_min, outfile_html)
