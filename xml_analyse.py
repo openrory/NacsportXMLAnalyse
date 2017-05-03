@@ -226,14 +226,14 @@ def plot_actions_sec(actions: dict) -> None:
 
 
 if __name__ == '__main__':
-    input_file_url = sys.argv[1]
+    input_file_url = sys.argv[2]
     file_name = input_file_url.split('/')[-1].split('.')[0]  # get the file name without extension
     directory = '/'.join(input_file_url.split('/')[:-1])
     outfile_html = directory + "/" + file_name + '.html'
     outfile_csv = directory + "/" + file_name + '.csv'
     # print(outfile_html)
 
-    command = sys.argv[2]
+    command = sys.argv[1]
 
     # xml_to_dict(input_file_url)
     nacsport_dict = xml_to_dict(input_file_url)
